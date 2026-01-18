@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useForm, ValidationError } from "@formspree/react";
 import {
   Mail,
   Phone,
@@ -15,18 +12,16 @@ import {
   Loader2,
   Clock,
   MessageSquare,
-  Sparkles,
   Github,
   Linkedin,
-  Twitter,
   Calendar,
   Zap,
   Shield,
-  ArrowRight,
   User,
   AtSign,
   FileText,
   PenLine,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,31 +29,22 @@ import { Textarea } from "@/components/ui/textarea";
 import { AnimatedContainer } from "@/components/shared/animated-container";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
-  message: z.string().min(20, "Message must be at least 20 characters"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@jpsolutions.dev",
-    href: "mailto:hello@jpsolutions.dev",
+    value: "lucas.gabule@gmail.com",
+    href: "mailto:lucas.gabule@gmail.com",
     description: "Send me an email anytime",
-    gradient: "from-blue-500 to-cyan-500",
+    linear: "from-blue-500 to-cyan-500",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-    description: "Mon-Fri from 9am to 6pm",
-    gradient: "from-emerald-500 to-teal-500",
+    value: "+63 926 942-2209",
+    href: "tel:+639269422209",
+    description: "Mon-Fri from 7am to 6pm",
+    linear: "from-emerald-500 to-teal-500",
   },
   {
     icon: MapPin,
@@ -66,14 +52,14 @@ const contactInfo = [
     value: "Philippines",
     href: null,
     description: "Working remotely worldwide",
-    gradient: "from-purple-500 to-pink-500",
+    linear: "from-purple-500 to-pink-500",
   },
 ];
 
 const socialLinks = [
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Github, href: "https://github.com/StevenGabule", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/john-paul-gabule-4a4640b6/", label: "LinkedIn" },
+  { icon: X, href: "https://x.com/GabuleP", label: "X" },
 ];
 
 const benefits = [
@@ -84,36 +70,14 @@ const benefits = [
 ];
 
 export default function ContactPage() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  });
-
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Form submitted:", data);
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    reset();
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
+  const [state, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_ID!);
 
   return (
     <div className="relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8881_1px,transparent_1px),linear-gradient(to_bottom,#8881_1px,transparent_1px)] bg-[size:32px_32px] opacity-30" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute inset-0 bg-[linear-linear(to_right,#8881_1px,transparent_1px),linear-linear(to_bottom,#8881_1px,transparent_1px)] bg-size-[32px_32px] opacity-30" />
+      <div className="absolute top-0 right-0 w-150 h-150 bg-primary/5 rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-125 h-125 bg-accent/5 rounded-full blur-[100px] -translate-x-1/2 translate-y-1/2" />
 
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -154,7 +118,7 @@ export default function ContactPage() {
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">
               Get in{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
                 Touch
               </span>
             </h1>
@@ -194,7 +158,7 @@ export default function ContactPage() {
                 viewport={{ once: true }}
                 className="space-y-4"
               >
-                {contactInfo.map((item, index) => (
+                {contactInfo.map((item) => (
                   <motion.div
                     key={item.label}
                     variants={staggerItem}
@@ -205,14 +169,14 @@ export default function ContactPage() {
                       whileHover={{ y: -4, x: 4 }}
                       transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
-                      {/* Gradient accent */}
+                      {/* linear accent */}
                       <div
-                        className={`absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b ${item.gradient}`}
+                        className={`absolute top-0 left-0 bottom-0 w-1 bg-linear-to-b ${item.linear}`}
                       />
 
                       <div className="flex items-start gap-4">
                         <motion.div
-                          className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-lg flex-shrink-0`}
+                          className={`w-12 h-12 rounded-xl bg-linear-to-br ${item.linear} flex items-center justify-center shadow-lg shrink-0`}
                           whileHover={{ scale: 1.1, rotate: 5 }}
                           transition={{ type: "spring", stiffness: 400 }}
                         >
@@ -290,7 +254,7 @@ export default function ContactPage() {
                   Connect With Me
                 </h3>
                 <div className="flex gap-3">
-                  {socialLinks.map((social, index) => (
+                  {socialLinks.map((social) => (
                     <motion.a
                       key={social.label}
                       href={social.href}
@@ -315,26 +279,67 @@ export default function ContactPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                {/* Gradient accent */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary" />
+                {/* linear accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-accent to-primary" />
 
                 <div className="p-8 md:p-10">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
-                      <Send className="h-6 w-6 text-white" />
+                  {/* Quick Schedule Option */}
+                  <motion.div
+                    className="mb-8 p-4 rounded-xl bg-linear-to-r from-primary/5 via-accent/5 to-primary/5 border border-primary/20"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                          <Calendar className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-foreground">Prefer a quick call?</p>
+                          <p className="text-sm text-muted-foreground">Schedule a free 30-min consultation</p>
+                        </div>
+                      </div>
+                      <motion.a
+                        href="https://calendly.com/lucas-gabule"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-lg hover:shadow-xl transition-shadow"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Calendar className="h-4 w-4" />
+                        Book a Meeting
+                      </motion.a>
+                    </div>
+                  </motion.div>
+
+                  {/* Divider */}
+                  <div className="relative mb-8">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-border/50"></div>
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase">
+                      <span className="bg-card px-4 text-muted-foreground">Or send a message</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+                      <Send className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-foreground">
+                      <h2 className="text-xl font-bold text-foreground">
                         Send a Message
                       </h2>
                       <p className="text-sm text-muted-foreground">
-                        Fill out the form and I&apos;ll get back to you soon
+                        I&apos;ll get back to you within 24 hours
                       </p>
                     </div>
                   </div>
 
                   <AnimatePresence mode="wait">
-                    {isSubmitted ? (
+                    {state.succeeded ? (
                       <motion.div
                         key="success"
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -365,7 +370,7 @@ export default function ContactPage() {
                         </p>
                         <Button
                           variant="outline"
-                          onClick={() => setIsSubmitted(false)}
+                          onClick={() => window.location.reload()}
                         >
                           Send Another Message
                         </Button>
@@ -376,7 +381,7 @@ export default function ContactPage() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        onSubmit={handleSubmit(onSubmit)}
+                        onSubmit={handleSubmit}
                         className="space-y-6"
                       >
                         <div className="grid sm:grid-cols-2 gap-6">
@@ -390,17 +395,17 @@ export default function ContactPage() {
                             </label>
                             <Input
                               id="name"
+                              name="name"
                               placeholder="Your name"
-                              {...register("name")}
-                              className={`h-12 bg-background/50 border-border/50 focus:border-primary ${
-                                errors.name ? "border-red-500" : ""
-                              }`}
+                              required
+                              className="h-12 bg-background/50 border-border/50 focus:border-primary"
                             />
-                            {errors.name && (
-                              <p className="text-sm text-red-500 mt-1">
-                                {errors.name.message}
-                              </p>
-                            )}
+                            <ValidationError
+                              prefix="Name"
+                              field="name"
+                              errors={state.errors}
+                              className="text-sm text-red-500 mt-1"
+                            />
                           </div>
                           <div>
                             <label
@@ -413,17 +418,17 @@ export default function ContactPage() {
                             <Input
                               id="email"
                               type="email"
+                              name="email"
                               placeholder="your@email.com"
-                              {...register("email")}
-                              className={`h-12 bg-background/50 border-border/50 focus:border-primary ${
-                                errors.email ? "border-red-500" : ""
-                              }`}
+                              required
+                              className="h-12 bg-background/50 border-border/50 focus:border-primary"
                             />
-                            {errors.email && (
-                              <p className="text-sm text-red-500 mt-1">
-                                {errors.email.message}
-                              </p>
-                            )}
+                            <ValidationError
+                              prefix="Email"
+                              field="email"
+                              errors={state.errors}
+                              className="text-sm text-red-500 mt-1"
+                            />
                           </div>
                         </div>
 
@@ -437,17 +442,17 @@ export default function ContactPage() {
                           </label>
                           <Input
                             id="subject"
+                            name="subject"
                             placeholder="What's this about?"
-                            {...register("subject")}
-                            className={`h-12 bg-background/50 border-border/50 focus:border-primary ${
-                              errors.subject ? "border-red-500" : ""
-                            }`}
+                            required
+                            className="h-12 bg-background/50 border-border/50 focus:border-primary"
                           />
-                          {errors.subject && (
-                            <p className="text-sm text-red-500 mt-1">
-                              {errors.subject.message}
-                            </p>
-                          )}
+                          <ValidationError
+                            prefix="Subject"
+                            field="subject"
+                            errors={state.errors}
+                            className="text-sm text-red-500 mt-1"
+                          />
                         </div>
 
                         <div>
@@ -460,18 +465,18 @@ export default function ContactPage() {
                           </label>
                           <Textarea
                             id="message"
+                            name="message"
                             placeholder="Tell me about your project, goals, and timeline..."
                             rows={6}
-                            {...register("message")}
-                            className={`bg-background/50 border-border/50 focus:border-primary resize-none ${
-                              errors.message ? "border-red-500" : ""
-                            }`}
+                            required
+                            className="bg-background/50 border-border/50 focus:border-primary resize-none"
                           />
-                          {errors.message && (
-                            <p className="text-sm text-red-500 mt-1">
-                              {errors.message.message}
-                            </p>
-                          )}
+                          <ValidationError
+                            prefix="Message"
+                            field="message"
+                            errors={state.errors}
+                            className="text-sm text-red-500 mt-1"
+                          />
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4">
@@ -487,9 +492,9 @@ export default function ContactPage() {
                               type="submit"
                               size="lg"
                               className="h-12 px-8"
-                              disabled={isSubmitting}
+                              disabled={state.submitting}
                             >
-                              {isSubmitting ? (
+                              {state.submitting ? (
                                 <>
                                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                                   Sending...
@@ -519,10 +524,10 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              {/* Gradient border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] rounded-3xl" />
+              {/* linear border */}
+              <div className="absolute inset-0 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_100%] animate-[shimmer_3s_linear_infinite] rounded-3xl" />
 
-              <div className="relative m-[2px] bg-background rounded-[22px] p-8 md:p-12">
+              <div className="relative m-0.5 bg-background rounded-[22px] p-8 md:p-12">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                   <div className="text-center md:text-left">
                     <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
@@ -540,7 +545,11 @@ export default function ContactPage() {
                       whileTap={{ scale: 0.98 }}
                     >
                       <Button asChild size="lg" className="h-12 px-8">
-                        <a href="mailto:hello@jpsolutions.dev">
+                        <a
+                          href="https://calendly.com/lucas-gabule"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <Calendar className="mr-2 h-5 w-5" />
                           Schedule a Call
                         </a>

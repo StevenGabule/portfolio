@@ -1,15 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   ExternalLink,
-  Github,
   ArrowRight,
-  ArrowUpRight,
-  Folder,
-  Star,
-  Eye,
+  MapPin,
+  Briefcase,
+  Sparkles,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,40 +17,94 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "AgTrakk",
+    subtitle: "Farm Management Platform",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, secure payment processing, and admin dashboard.",
-    category: "Full Stack",
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
+      "Comprehensive digital farm management platform designed to modernize agricultural operations. Connecting the dots from plant to plate with employee onboarding, financial analysis, equipment maintenance, and smart farming capabilities.",
+    industry: "AgriTech",
+    type: "SaaS Platform",
+    location: "Washington, USA",
+    image: "/features/agtrakk-homepage-hero-section.PNG",
+    technologies: ["Laravel", "Next.js", "TypeScript", "MySQL", "Digital Ocean"],
+    highlights: ["Employee Integration", "Financial Analysis", "Smart Farming", "Payroll Management"],
+    gradient: "from-emerald-500 to-teal-500",
+    accentColor: "emerald",
+    liveUrl: "https://agtrakk.com/",
+  },
+  {
+    title: "Knowledge Hub",
+    subtitle: "Learning Management System",
+    description:
+      "Digital learning platform for healthcare professionals providing online courses, CPD point tracking, workshops access, and progress monitoring for medical training and certification.",
+    industry: "HealthTech",
+    type: "LMS Portal",
+    location: "South Africa",
+    image: "/features/knowledge-homepage-hero-section.PNG",
+    technologies: ["NestJS", "Next.js", "TypeScript", "MySQL", "Azure", "Prisma"],
+    highlights: ["Online Courses", "CPD Tracking", "Workshop Management", "Progress Analytics"],
+    gradient: "from-blue-500 to-cyan-500",
+    accentColor: "blue",
+    liveUrl: "https://kh.hai.co.za/",
+  },
+  {
+    title: "Databit Solutions",
+    subtitle: "AI Consulting & Services",
+    description:
+      "AI consulting company platform helping businesses adopt, scale, and govern AI effectively. Features AI strategy roadmapping, LLMOps optimization, and AI-enhanced UX design services.",
+    industry: "AI & Technology",
+    type: "Corporate Website",
+    location: "Canada",
+    image: "/features/databit-homepage-hero-section.PNG",
+    technologies: ["Next.js", "FastAPI", "Python", "PostgreSQL", "GCP", "Docker"],
+    highlights: ["AI Strategy", "Generative AI & LLMOps", "Decision Intelligence", "Responsible AI"],
     gradient: "from-violet-500 to-purple-500",
-    stats: { stars: 128, views: "2.4k" },
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+    accentColor: "violet",
+    liveUrl: "https://databit.ca",
   },
   {
-    title: "Task Management App",
+    title: "TidyDen",
+    subtitle: "Cleaning Services Marketplace",
     description:
-      "A collaborative task management application with real-time updates, team workspaces, kanban boards, and progress tracking.",
-    category: "Web App",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    gradient: "from-cyan-500 to-blue-500",
-    stats: { stars: 89, views: "1.8k" },
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+      "Australia's cleaning services marketplace connecting homeowners with vetted local cleaners. Features instant quoting, intelligent matching, live availability, and secure escrow payments.",
+    industry: "Home Services",
+    type: "Marketplace",
+    location: "Australia",
+    image: "/features/tidyden-homepage-hero-section.PNG",
+    technologies: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "Stripe"],
+    highlights: ["Instant Quoting", "Smart Matching", "Real-time Chat", "Escrow Payments"],
+    gradient: "from-orange-500 to-amber-500",
+    accentColor: "orange",
+    liveUrl: "https://tidyden-web-dev.up.railway.app",
   },
   {
-    title: "Analytics Dashboard",
+    title: "ICSP Portal",
+    subtitle: "Healthcare Placement System",
     description:
-      "A comprehensive analytics dashboard with interactive data visualization, custom reports, and real-time metrics monitoring.",
-    category: "Dashboard",
-    technologies: ["Next.js", "D3.js", "Python", "Redis"],
-    gradient: "from-orange-500 to-red-500",
-    stats: { stars: 156, views: "3.1k" },
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+      "Official South African Department of Health portal managing placement of healthcare graduates into internship and community service positions. Processes 10,000+ applications annually.",
+    industry: "Government",
+    type: "Web Application",
+    location: "South Africa",
+    image: "/features/icsp-homepage-hero-section.PNG",
+    technologies: ["Laravel", "NestJS", "Next.js", "PostgreSQL", "Azure", "Docker"],
+    highlights: ["Application Processing", "Document Verification", "Automated Matching", "9K+ Placements/Cycle"],
+    gradient: "from-sky-500 to-blue-600",
+    accentColor: "sky",
+    liveUrl: "https://icsp-doh.org.za",
+  },
+  {
+    title: "S&R Shopping",
+    subtitle: "E-Commerce Platform",
+    description:
+      "Philippines' premier warehouse club retailer e-commerce platform. Enables members to shop online for bulk groceries, electronics, furniture with express delivery and in-store pickup.",
+    industry: "Retail",
+    type: "E-Commerce",
+    location: "Philippines",
+    image: "/features/snr-homepage-hero-section.PNG",
+    technologies: ["PHP", "Laravel", "jQuery", "MySQL", "Swift", "Java"],
+    highlights: ["Express Delivery", "Membership System", "Multi-Platform", "Warehouse Locator"],
+    gradient: "from-rose-500 to-pink-500",
+    accentColor: "rose",
+    liveUrl: "https://www.snrshopping.com",
   },
 ];
 
@@ -59,8 +112,9 @@ export function FeaturedProjects() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
+      <div className="absolute inset-0 bg-muted/20" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] translate-y-1/2" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -71,172 +125,148 @@ export function FeaturedProjects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Folder className="h-4 w-4" />
-            My Work
+            <Sparkles className="h-4 w-4" />
+            Featured Work
           </motion.span>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Featured{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Projects
+            Projects That{" "}
+            <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
+              Make Impact
             </span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A selection of projects I&apos;ve worked on. Each one represents
-            unique challenges solved with modern technologies.
+            From AgriTech to HealthTech, E-Commerce to AI — delivering solutions
+            that transform businesses across industries worldwide.
           </p>
         </AnimatedContainer>
 
-        {/* Projects Grid */}
+        {/* Projects Grid - Bento Style */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               variants={staggerItem}
-              className="group"
+              className={`group ${index === 0 ? "md:col-span-2 lg:col-span-2" : ""}`}
             >
               <motion.div
                 className="relative h-full"
-                whileHover={{ y: -8 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
-                {/* Card */}
                 <div className="relative h-full rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm overflow-hidden">
-                  {/* Project Preview */}
-                  <div className="relative h-52 overflow-hidden">
-                    {/* Gradient Background */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}
+                  {/* Project Image */}
+                  <div className={`relative overflow-hidden ${index === 0 ? "h-64 lg:h-72" : "h-48"}`}>
+                    {/* Gradient Overlay */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 z-10`} />
+
+                    {/* Image */}
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
 
-                    {/* Grid Pattern Overlay */}
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff1_1px,transparent_1px),linear-gradient(to_bottom,#fff1_1px,transparent_1px)] bg-[size:20px_20px]" />
+                    {/* Top gradient fade */}
+                    <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent z-10" />
 
-                    {/* Browser Mockup */}
-                    <div className="absolute inset-4 rounded-lg bg-background/95 shadow-2xl overflow-hidden">
-                      {/* Browser Header */}
-                      <div className="h-8 bg-muted/80 border-b border-border/50 flex items-center px-3 gap-2">
-                        <div className="flex gap-1.5">
-                          <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                        </div>
-                        <div className="flex-1 mx-2">
-                          <div className="h-4 bg-background rounded-md" />
-                        </div>
-                      </div>
-                      {/* Browser Content */}
-                      <div className="p-4 space-y-3">
-                        <div className="h-3 bg-muted rounded w-3/4" />
-                        <div className="h-3 bg-muted rounded w-1/2" />
-                        <div className="h-12 bg-muted/50 rounded mt-4" />
-                        <div className="grid grid-cols-3 gap-2 mt-2">
-                          <div className="h-8 bg-muted/50 rounded" />
-                          <div className="h-8 bg-muted/50 rounded" />
-                          <div className="h-8 bg-muted/50 rounded" />
-                        </div>
-                      </div>
+                    {/* Bottom gradient fade */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-card to-transparent z-10" />
+
+                    {/* Industry & Type Badges */}
+                    <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+                      <Badge className={`bg-gradient-to-r ${project.gradient} text-white border-0 shadow-lg`}>
+                        <Briefcase className="h-3 w-3 mr-1" />
+                        {project.type}
+                      </Badge>
+                      <Badge variant="secondary" className="bg-black/50 text-white border-0 backdrop-blur-sm">
+                        {project.industry}
+                      </Badge>
                     </div>
 
-                    {/* Featured Badge */}
-                    {project.featured && (
-                      <div className="absolute top-3 right-3 z-10">
-                        <Badge className="bg-background/90 text-foreground backdrop-blur-sm border-0 shadow-lg">
-                          <Star className="h-3 w-3 mr-1 fill-yellow-500 text-yellow-500" />
-                          Featured
-                        </Badge>
-                      </div>
-                    )}
+                    {/* Location Badge */}
+                    <div className="absolute top-4 right-4 z-20">
+                      <Badge variant="secondary" className="bg-black/50 text-white border-0 backdrop-blur-sm">
+                        <MapPin className="h-3 w-3 mr-1" />
+                        {project.location}
+                      </Badge>
+                    </div>
 
-                    {/* Hover Overlay */}
+                    {/* Hover Overlay with CTA */}
                     <motion.div
-                      className="absolute inset-0 bg-background/95 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={false}
+                      className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-20"
                     >
                       <motion.a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                        className={`flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r ${project.gradient} text-white font-medium shadow-lg`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <ExternalLink className="h-4 w-4" />
-                        Live Demo
-                      </motion.a>
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-foreground font-medium text-sm hover:bg-muted/80 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Github className="h-4 w-4" />
-                        Source
+                        Visit Website
                       </motion.a>
                     </motion.div>
                   </div>
 
                   {/* Content */}
                   <div className="p-6">
-                    {/* Category & Stats */}
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge
-                        variant="outline"
-                        className="text-xs font-medium border-border/50"
-                      >
-                        {project.category}
-                      </Badge>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Star className="h-3 w-3" />
-                          {project.stats.stars}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Eye className="h-3 w-3" />
-                          {project.stats.views}
-                        </span>
-                      </div>
+                    {/* Title & Subtitle */}
+                    <div className="mb-3">
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className={`text-sm font-medium bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
+                        {project.subtitle}
+                      </p>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-
                     {/* Description */}
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
                       {project.description}
                     </p>
 
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies.map((tech) => (
+                    {/* Key Highlights */}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.highlights.slice(0, index === 0 ? 4 : 3).map((highlight) => (
                         <span
-                          key={tech}
-                          className="px-2.5 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground"
+                          key={highlight}
+                          className={`inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-${project.accentColor}-500/10 text-${project.accentColor}-600 dark:text-${project.accentColor}-400`}
+                          style={{
+                            backgroundColor: `hsl(var(--${project.accentColor === 'emerald' ? 'primary' : project.accentColor === 'blue' ? 'primary' : project.accentColor === 'violet' ? 'accent' : 'primary'}) / 0.1)`,
+                            color: `hsl(var(--primary))`,
+                          }}
                         >
-                          {tech}
+                          {highlight}
                         </span>
                       ))}
                     </div>
 
-                    {/* View Project Link */}
-                    <Link
-                      href="/projects"
-                      className="inline-flex items-center text-sm font-medium text-primary hover:underline group/link"
-                    >
-                      View details
-                      <ArrowUpRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                    </Link>
+                    {/* Technologies */}
+                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-border/50">
+                      {project.technologies.slice(0, index === 0 ? 5 : 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > (index === 0 ? 5 : 4) && (
+                        <span className="px-2 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground">
+                          +{project.technologies.length - (index === 0 ? 5 : 4)}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -258,7 +288,7 @@ export function FeaturedProjects() {
             <span className="text-muted-foreground text-sm">
               or{" "}
               <Link href="/contact" className="text-primary hover:underline">
-                discuss your project
+                start your project
               </Link>
             </span>
           </div>

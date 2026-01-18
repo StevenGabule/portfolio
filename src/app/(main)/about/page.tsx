@@ -28,65 +28,125 @@ import { AnimatedContainer } from "@/components/shared/animated-container";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const skills = [
+  // Frontend
   { name: "JavaScript", category: "frontend" },
   { name: "TypeScript", category: "frontend" },
   { name: "React", category: "frontend" },
   { name: "Next.js", category: "frontend" },
-  { name: "Vue.js", category: "frontend" },
-  { name: "Tailwind CSS", category: "frontend" },
+  { name: "Angular", category: "frontend" },
+  { name: "TailwindCSS", category: "frontend" },
+  { name: "Shadcn", category: "frontend" },
+  { name: "HTML", category: "frontend" },
+  { name: "CSS", category: "frontend" },
+  // Backend
   { name: "Node.js", category: "backend" },
+  { name: "NestJS", category: "backend" },
   { name: "Python", category: "backend" },
-  { name: "Express", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "MongoDB", category: "backend" },
+  { name: "FastAPI", category: "backend" },
+  { name: "Golang", category: "backend" },
+  { name: "PHP", category: "backend" },
+  { name: "Laravel", category: "backend" },
+  { name: "Java", category: "backend" },
   { name: "GraphQL", category: "backend" },
-  { name: "REST APIs", category: "backend" },
-  { name: "Prisma", category: "backend" },
+  { name: "Microservices", category: "backend" },
+  // Database
+  { name: "PostgreSQL", category: "database" },
+  { name: "MongoDB", category: "database" },
+  { name: "MySQL", category: "database" },
+  { name: "MS SQL Server", category: "database" },
+  { name: "ORM (Prisma/Drizzle/TypeORM)", category: "database" },
+  // DevOps
   { name: "Docker", category: "devops" },
+  { name: "Kubernetes", category: "devops" },
   { name: "AWS", category: "devops" },
+  { name: "Azure", category: "devops" },
+  { name: "Google Cloud", category: "devops" },
   { name: "Git", category: "devops" },
   { name: "CI/CD", category: "devops" },
+  { name: "DevOps", category: "devops" },
+  // Mobile
+  { name: "React Native", category: "mobile" },
+  { name: "Kotlin", category: "mobile" },
 ];
 
 const experience = [
   {
     title: "Senior Full Stack Developer",
-    company: "Tech Solutions Inc.",
-    period: "2022 - Present",
+    company: "Health Advanced Institution",
+    period: "Feb 2024 - Mar 2025",
     description:
-      "Leading development of enterprise web applications, mentoring junior developers, and implementing best practices across teams.",
+      "Led development of healthcare platforms including OHSC (health council portal) and ICSP (internship/community service placement system) processing 10,000+ applications annually.",
     achievements: [
-      "Led team of 5 developers",
-      "Reduced load times by 60%",
-      "Implemented CI/CD pipeline",
+      "Built ICSP portal for SA Department of Health",
+      "Processed 9,000+ healthcare placements per cycle",
+      "Implemented automated document verification",
     ],
     color: "from-violet-500 to-purple-500",
   },
   {
-    title: "Full Stack Developer",
-    company: "Digital Agency Co.",
-    period: "2020 - 2022",
+    title: "Senior Full Stack Developer",
+    company: "DataBit Solutions Inc.",
+    period: "Feb 2024 - Dec 2024",
     description:
-      "Built custom web applications for clients across various industries. Specialized in React and Node.js development.",
+      "Developed AI-powered applications including MedTalkAI (healthcare chatbot) and Rincon Forms (intelligent form builder) using modern tech stack.",
     achievements: [
-      "Delivered 20+ projects",
-      "99% client satisfaction",
+      "Built AI consulting company platform",
+      "Implemented LLMOps and AI strategy tools",
+      "Delivered enterprise AI solutions",
+    ],
+    color: "from-emerald-500 to-teal-500",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Digital Awesome Inc.",
+    period: "Sep 2023 - Dec 2023",
+    description:
+      "Contributed to enterprise web applications with focus on performance optimization and modern development practices.",
+    achievements: [
+      "Optimized application performance",
+      "Implemented modern CI/CD pipelines",
       "Built reusable component library",
     ],
     color: "from-cyan-500 to-blue-500",
   },
   {
-    title: "Frontend Developer",
-    company: "StartUp Labs",
-    period: "2019 - 2020",
+    title: "Full Stack Developer",
+    company: "NXTWork",
+    period: "Sep 2022 - Mar 2023",
     description:
-      "Developed responsive user interfaces and improved website performance. Collaborated with designers to implement pixel-perfect designs.",
+      "Developed web applications using React and Node.js ecosystem, focusing on scalable architecture and clean code practices.",
     achievements: [
-      "Improved performance by 40%",
-      "Mentored 2 interns",
-      "Established coding standards",
+      "Delivered multiple client projects",
+      "Implemented microservices architecture",
+      "Mentored junior developers",
+    ],
+    color: "from-blue-500 to-indigo-500",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Vircreative Corp",
+    period: "Jul 2019 - Dec 2020",
+    description:
+      "Built custom web solutions for diverse clients including e-commerce platforms and business applications. Specialized in PHP/Laravel and JavaScript.",
+    achievements: [
+      "Delivered 20+ client projects",
+      "Built S&R Shopping e-commerce platform",
+      "99% client satisfaction rate",
     ],
     color: "from-orange-500 to-red-500",
+  },
+  {
+    title: "Freelance Developer",
+    company: "Self-Employed",
+    period: "Jul 2018 - Jun 2019",
+    description:
+      "Started professional journey as a freelance full-stack developer, building websites and web applications for small businesses and startups.",
+    achievements: [
+      "Built foundation in full-stack development",
+      "Established client relationships",
+      "Developed diverse project portfolio",
+    ],
+    color: "from-pink-500 to-rose-500",
   },
 ];
 
@@ -130,10 +190,10 @@ const values = [
 ];
 
 const stats = [
-  { value: "5+", label: "Years Experience", icon: Calendar },
+  { value: "6+", label: "Years Experience", icon: Calendar },
   { value: "50+", label: "Projects Completed", icon: Rocket },
   { value: "30+", label: "Happy Clients", icon: Users },
-  { value: "10k+", label: "Lines of Code", icon: Code2 },
+  { value: "100k+", label: "Lines of Code", icon: Code2 },
 ];
 
 const funFacts = [
@@ -281,16 +341,17 @@ export default function AboutPage() {
                   {/* Bio */}
                   <div className="mt-6 space-y-4 text-muted-foreground">
                     <p>
-                      With over 5 years of experience in web development, I&apos;ve
-                      had the privilege of working with startups, agencies, and
-                      enterprise companies to build solutions that make a real
+                      With over 6 years of experience in software development, I&apos;ve
+                      had the privilege of working with companies across AgriTech, HealthTech,
+                      AI, E-commerce, and Government sectors to build solutions that make a real
                       impact.
                     </p>
                     <p>
-                      My approach combines technical expertise with a deep
-                      understanding of business needs. I believe that great software
-                      isn&apos;t just about code—it&apos;s about solving problems
-                      and creating value for users and businesses alike.
+                      From building healthcare placement systems processing 10,000+ applications
+                      annually to developing AI-powered platforms and e-commerce solutions,
+                      my approach combines technical expertise with a deep understanding of
+                      business needs. Great software isn&apos;t just about code—it&apos;s about
+                      solving real problems.
                     </p>
                   </div>
 
@@ -365,7 +426,28 @@ export default function AboutPage() {
                     </div>
 
                     <div>
-                      <p className="text-sm text-muted-foreground mb-3">DevOps</p>
+                      <p className="text-sm text-muted-foreground mb-3">Database</p>
+                      <div className="flex flex-wrap gap-2">
+                        {skills
+                          .filter((s) => s.category === "database")
+                          .map((skill, index) => (
+                            <motion.span
+                              key={skill.name}
+                              className="px-3 py-1.5 text-sm font-medium rounded-lg bg-amber-500/10 text-amber-500 border border-amber-500/20"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.05 }}
+                              whileHover={{ scale: 1.05, y: -2 }}
+                            >
+                              {skill.name}
+                            </motion.span>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-3">DevOps & Cloud</p>
                       <div className="flex flex-wrap gap-2">
                         {skills
                           .filter((s) => s.category === "devops")
@@ -373,6 +455,27 @@ export default function AboutPage() {
                             <motion.span
                               key={skill.name}
                               className="px-3 py-1.5 text-sm font-medium rounded-lg bg-purple-500/10 text-purple-500 border border-purple-500/20"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              whileInView={{ opacity: 1, scale: 1 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.05 }}
+                              whileHover={{ scale: 1.05, y: -2 }}
+                            >
+                              {skill.name}
+                            </motion.span>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-3">Mobile</p>
+                      <div className="flex flex-wrap gap-2">
+                        {skills
+                          .filter((s) => s.category === "mobile")
+                          .map((skill, index) => (
+                            <motion.span
+                              key={skill.name}
+                              className="px-3 py-1.5 text-sm font-medium rounded-lg bg-orange-500/10 text-orange-500 border border-orange-500/20"
                               initial={{ opacity: 0, scale: 0.8 }}
                               whileInView={{ opacity: 1, scale: 1 }}
                               viewport={{ once: true }}

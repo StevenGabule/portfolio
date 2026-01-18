@@ -86,7 +86,7 @@ export function TestimonialsPreview() {
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-muted/30" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8881_1px,transparent_1px),linear-gradient(to_bottom,#8881_1px,transparent_1px)] bg-[size:32px_32px] opacity-30" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8881_1px,transparent_1px),linear-gradient(to_bottom,#8881_1px,transparent_1px)] bg-size-[32px_32px] opacity-30" />
 
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
@@ -107,7 +107,7 @@ export function TestimonialsPreview() {
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
             Trusted by{" "}
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
               Amazing Clients
             </span>
           </h2>
@@ -151,7 +151,7 @@ export function TestimonialsPreview() {
               <div className="relative rounded-3xl border border-border/50 bg-card/80 backdrop-blur-sm p-8 md:p-12 overflow-hidden">
                 {/* Gradient accent */}
                 <div
-                  className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${testimonials[activeIndex].accentColor}`}
+                  className={`absolute top-0 left-0 right-0 h-1 bg-linear-to-r ${testimonials[activeIndex].accentColor}`}
                 />
 
                 {/* Large quote icon */}
@@ -186,7 +186,7 @@ export function TestimonialsPreview() {
                     <div className="flex items-center gap-4">
                       {/* Avatar */}
                       <div
-                        className={`w-14 h-14 rounded-full bg-gradient-to-br ${testimonials[activeIndex].accentColor} flex items-center justify-center shadow-lg`}
+                        className={`w-14 h-14 rounded-full bg-linear-to-br ${testimonials[activeIndex].accentColor} flex items-center justify-center shadow-lg`}
                       >
                         <span className="text-lg font-bold text-white">
                           {testimonials[activeIndex].avatar}
@@ -246,11 +246,10 @@ export function TestimonialsPreview() {
                 setIsAutoPlaying(false);
                 setActiveIndex(index);
               }}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                index === activeIndex
+              className={`h-2 rounded-full transition-all duration-300 ${index === activeIndex
                   ? "w-8 bg-primary"
                   : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-              }`}
+                }`}
             />
           ))}
         </div>
@@ -267,9 +266,8 @@ export function TestimonialsPreview() {
             <motion.div
               key={testimonial.name}
               variants={staggerItem}
-              className={`cursor-pointer ${
-                index === activeIndex ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""
-              }`}
+              className={`cursor-pointer ${index === activeIndex ? "ring-2 ring-primary ring-offset-2 ring-offset-background" : ""
+                }`}
               onClick={() => {
                 setIsAutoPlaying(false);
                 setActiveIndex(index);
@@ -281,7 +279,7 @@ export function TestimonialsPreview() {
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${testimonial.accentColor} flex items-center justify-center`}
+                    className={`w-10 h-10 rounded-full bg-linear-to-br ${testimonial.accentColor} flex items-center justify-center`}
                   >
                     <span className="text-sm font-bold text-white">
                       {testimonial.avatar}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail, ArrowUpRight, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const footerLinks = {
@@ -17,18 +17,18 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://twitter.com", icon: Twitter, label: "Twitter" },
-  { href: "mailto:hello@jpsolutions.dev", icon: Mail, label: "Email" },
+  { href: "https://github.com/stevengabule", icon: Github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/john-paul-gabule-4a4640b6/", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://x.com/GabuleP", icon: X, label: "X" },
+  { href: "mailto:lucas.gabule@gmail.com", icon: Mail, label: "Email" },
 ];
 
 function FooterLogo() {
   return (
     <div className="flex items-center gap-2">
       {/* Icon Badge */}
-      <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-primary to-accent shadow-lg">
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent" />
+      <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-primary via-primary to-accent shadow-lg">
+        <div className="absolute inset-0 rounded-xl bg-linear-to-br from-white/20 to-transparent" />
         <span className="font-black text-white tracking-tighter relative z-10 text-base">
           JP
         </span>
@@ -37,7 +37,7 @@ function FooterLogo() {
       {/* Text */}
       <div className="flex flex-col leading-none">
         <div className="flex items-baseline">
-          <span className="font-black tracking-tight bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent text-xl">
+          <span className="font-black tracking-tight bg-linear-to-r from-primary to-accent bg-clip-text text-transparent text-xl">
             JP
           </span>
           <span className="font-bold tracking-tight text-foreground text-xl">

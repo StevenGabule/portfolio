@@ -13,7 +13,6 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { AnimatedContainer } from "@/components/shared/animated-container";
 
 const benefits = [
   "Free initial consultation",
@@ -31,14 +30,14 @@ export function CTASection() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-background to-accent/5" />
 
       {/* Animated grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]" />
 
       {/* Animated orbs */}
       <motion.div
-        className="absolute top-1/4 -left-20 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[120px]"
+        className="absolute top-1/4 -left-20 w-100 h-100 bg-primary/20 rounded-full blur-[120px]"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.3, 0.5, 0.3],
@@ -51,7 +50,7 @@ export function CTASection() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-accent/15 rounded-full blur-[120px]"
+        className="absolute bottom-1/4 -right-20 w-125 h-125 bg-accent/15 rounded-full blur-[120px]"
         animate={{
           scale: [1.2, 1, 1.2],
           opacity: [0.4, 0.2, 0.4],
@@ -100,10 +99,10 @@ export function CTASection() {
             transition={{ duration: 0.6 }}
           >
             {/* Card gradient border effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] animate-[shimmer_3s_linear_infinite] rounded-3xl" />
+            <div className="absolute inset-0 bg-linear-to-r from-primary via-accent to-primary bg-size-[200%_100%] animate-[shimmer_3s_linear_infinite] rounded-3xl" />
 
             {/* Card content */}
-            <div className="relative m-[2px] bg-background rounded-[22px] p-8 md:p-12 lg:p-16">
+            <div className="relative m-0.5 bg-background rounded-[22px] p-8 md:p-12 lg:p-16">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Left side - Content */}
                 <div className="text-center lg:text-left">
@@ -120,7 +119,7 @@ export function CTASection() {
                   <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                     Ready to Build
                     <br />
-                    <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
                       Something Amazing?
                     </span>
                   </h2>
@@ -213,7 +212,7 @@ export function CTASection() {
                       {/* Fake form preview */}
                       <div className="space-y-4">
                         <div className="flex items-center gap-3 mb-6">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                          <div className="w-10 h-10 rounded-full bg-linear-to-br from-primary to-accent flex items-center justify-center">
                             <Mail className="h-5 w-5 text-white" />
                           </div>
                           <div>

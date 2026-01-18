@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -18,6 +19,12 @@ import {
   Server,
   Globe,
   CheckCircle2,
+  MapPin,
+  Briefcase,
+  Building2,
+  Cpu,
+  Heart,
+  Users,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,104 +33,117 @@ import { staggerContainer, staggerItem } from "@/lib/animations";
 
 const categories = [
   { id: "All", label: "All Projects", icon: Folder },
-  { id: "Web App", label: "Web Apps", icon: Globe },
+  { id: "SaaS Platform", label: "SaaS", icon: Layers },
+  { id: "Web Application", label: "Web Apps", icon: Globe },
   { id: "E-Commerce", label: "E-Commerce", icon: ShoppingCart },
-  { id: "Dashboard", label: "Dashboards", icon: BarChart3 },
-  { id: "API", label: "APIs", icon: Server },
+  { id: "Marketplace", label: "Marketplace", icon: Users },
+  { id: "Corporate Website", label: "Corporate", icon: Building2 },
 ];
 
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "AgTrakk",
+    subtitle: "Farm Management Platform",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, secure payment processing, and order management.",
-    category: "E-Commerce",
-    technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Prisma"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Comprehensive digital farm management platform designed to modernize agricultural operations. Connecting the dots from plant to plate with employee onboarding, financial analysis, equipment maintenance, and smart farming capabilities.",
+    industry: "AgriTech",
+    category: "SaaS Platform",
+    location: "Washington, USA",
+    image: "/features/agtrakk-homepage-hero-section.PNG",
+    technologies: ["Laravel", "Next.js", "TypeScript", "MySQL", "Digital Ocean"],
+    liveUrl: "https://agtrakk.com/",
     featured: true,
-    gradient: "from-violet-500 to-purple-500",
-    stats: { stars: 128, views: "2.4k" },
-    highlights: ["Payment Integration", "Admin Dashboard", "Real-time Updates"],
+    gradient: "from-emerald-500 to-teal-500",
+    highlights: ["Employee Integration", "Financial Analysis", "Smart Farming", "Payroll Management"],
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Knowledge Hub",
+    subtitle: "Learning Management System",
     description:
-      "A collaborative task management application with real-time updates, team workspaces, kanban boards, and progress tracking.",
-    category: "Web App",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Redux"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "Digital learning platform for healthcare professionals providing online courses, CPD point tracking, workshops access, and progress monitoring for medical training and certification.",
+    industry: "HealthTech",
+    category: "Web Application",
+    location: "South Africa",
+    image: "/features/knowledge-homepage-hero-section.PNG",
+    technologies: ["NestJS", "Next.js", "TypeScript", "MySQL", "Azure", "Prisma"],
+    liveUrl: "https://kh.hai.co.za/",
     featured: true,
-    gradient: "from-cyan-500 to-blue-500",
-    stats: { stars: 89, views: "1.8k" },
-    highlights: ["Real-time Sync", "Team Collaboration", "Kanban Boards"],
+    gradient: "from-blue-500 to-cyan-500",
+    highlights: ["Online Courses", "CPD Tracking", "Workshop Management", "Progress Analytics"],
   },
   {
     id: 3,
-    title: "Analytics Dashboard",
+    title: "Databit Solutions",
+    subtitle: "AI Consulting & Services",
     description:
-      "A comprehensive analytics dashboard with data visualization, custom reports, real-time metrics, and export functionality.",
-    category: "Dashboard",
-    technologies: ["Next.js", "D3.js", "Python", "Redis", "PostgreSQL"],
-    liveUrl: "#",
-    githubUrl: "#",
+      "AI consulting company platform helping businesses adopt, scale, and govern AI effectively. Features AI strategy roadmapping, LLMOps optimization, and AI-enhanced UX design services.",
+    industry: "AI & Technology",
+    category: "Corporate Website",
+    location: "Canada",
+    image: "/features/databit-homepage-hero-section.PNG",
+    technologies: ["Next.js", "FastAPI", "Python", "PostgreSQL", "GCP", "Docker"],
+    liveUrl: "https://databit.ca",
     featured: true,
-    gradient: "from-orange-500 to-red-500",
-    stats: { stars: 156, views: "3.1k" },
-    highlights: ["Custom Reports", "Data Visualization", "Real-time Metrics"],
+    gradient: "from-violet-500 to-purple-500",
+    highlights: ["AI Strategy", "Generative AI & LLMOps", "Decision Intelligence", "Responsible AI"],
   },
   {
     id: 4,
-    title: "RESTful API Service",
+    title: "TidyDen",
+    subtitle: "Cleaning Services Marketplace",
     description:
-      "A scalable RESTful API with authentication, rate limiting, caching, and comprehensive documentation using OpenAPI.",
-    category: "API",
-    technologies: ["Node.js", "Express", "JWT", "Redis", "Swagger"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-    gradient: "from-emerald-500 to-teal-500",
-    stats: { stars: 67, views: "1.2k" },
-    highlights: ["Rate Limiting", "JWT Auth", "OpenAPI Docs"],
+      "Australia's cleaning services marketplace connecting homeowners with vetted local cleaners. Features instant quoting, intelligent matching, live availability, and secure escrow payments.",
+    industry: "Home Services",
+    category: "Marketplace",
+    location: "Australia",
+    image: "/features/tidyden-homepage-hero-section.PNG",
+    technologies: ["Next.js", "NestJS", "PostgreSQL", "Prisma", "Stripe"],
+    liveUrl: "https://tidyden-web-dev.up.railway.app",
+    featured: true,
+    gradient: "from-orange-500 to-amber-500",
+    highlights: ["Instant Quoting", "Smart Matching", "Real-time Chat", "Escrow Payments"],
   },
   {
     id: 5,
-    title: "Portfolio Website",
+    title: "ICSP Portal",
+    subtitle: "Healthcare Placement System",
     description:
-      "A modern portfolio website with dark mode, animations, blog functionality, and contact form integration.",
-    category: "Web App",
-    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "MDX"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-    gradient: "from-pink-500 to-rose-500",
-    stats: { stars: 45, views: "980" },
-    highlights: ["Dark Mode", "Blog System", "Animations"],
+      "Official South African Department of Health portal managing placement of healthcare graduates into internship and community service positions. Processes 10,000+ applications annually.",
+    industry: "Government",
+    category: "Web Application",
+    location: "South Africa",
+    image: "/features/icsp-homepage-hero-section.PNG",
+    technologies: ["Laravel", "NestJS", "Next.js", "PostgreSQL", "Azure", "Docker"],
+    liveUrl: "https://icsp-doh.org.za",
+    featured: true,
+    gradient: "from-sky-500 to-blue-600",
+    highlights: ["Application Processing", "Document Verification", "Automated Matching", "9K+ Placements/Cycle"],
   },
   {
     id: 6,
-    title: "Inventory Management",
+    title: "S&R Shopping",
+    subtitle: "E-Commerce Platform",
     description:
-      "An inventory management system with barcode scanning, stock tracking, low-stock alerts, and reporting.",
-    category: "Dashboard",
-    technologies: ["React", "Node.js", "PostgreSQL", "Chart.js"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
-    gradient: "from-amber-500 to-orange-500",
-    stats: { stars: 34, views: "756" },
-    highlights: ["Barcode Scanning", "Stock Alerts", "Reports"],
+      "Philippines' premier warehouse club retailer e-commerce platform. Enables members to shop online for bulk groceries, electronics, furniture with express delivery and in-store pickup.",
+    industry: "Retail",
+    category: "E-Commerce",
+    location: "Philippines",
+    image: "/features/snr-homepage-hero-section.PNG",
+    technologies: ["PHP", "Laravel", "jQuery", "MySQL", "Swift", "Java"],
+    liveUrl: "https://www.snrshopping.com",
+    featured: true,
+    gradient: "from-rose-500 to-pink-500",
+    highlights: ["Express Delivery", "Membership System", "Multi-Platform", "Warehouse Locator"],
   },
 ];
 
 const stats = [
   { value: "50+", label: "Projects Completed" },
   { value: "30+", label: "Happy Clients" },
-  { value: "99%", label: "Success Rate" },
-  { value: "5+", label: "Years Experience" },
+  { value: "6+", label: "Years Experience" },
+  { value: "10+", label: "Countries Served" },
 ];
 
 export default function ProjectsPage() {
@@ -186,8 +206,8 @@ export default function ProjectsPage() {
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-              A collection of my work showcasing unique challenges and creative
-              solutions tailored to specific needs.
+              From AgriTech to HealthTech, E-Commerce to AI — delivering solutions
+              that transform businesses across industries worldwide.
             </p>
           </AnimatedContainer>
 
@@ -263,108 +283,74 @@ export default function ProjectsPage() {
                     whileHover={{ y: -8 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    {/* Project Preview */}
-                    <div className="relative h-52 overflow-hidden">
-                      {/* Gradient Background */}
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90`}
+                    {/* Project Preview with Real Image */}
+                    <div className="relative h-56 overflow-hidden">
+                      {/* Gradient Overlay */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 z-10`} />
+
+                      {/* Project Image */}
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                       />
 
-                      {/* Grid Pattern Overlay */}
-                      <div className="absolute inset-0 bg-[linear-gradient(to_right,#fff1_1px,transparent_1px),linear-gradient(to_bottom,#fff1_1px,transparent_1px)] bg-[size:20px_20px]" />
+                      {/* Top gradient fade */}
+                      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/40 to-transparent z-10" />
 
-                      {/* Browser Mockup */}
-                      <div className="absolute inset-4 rounded-lg bg-background/95 shadow-2xl overflow-hidden">
-                        {/* Browser Header */}
-                        <div className="h-8 bg-muted/80 border-b border-border/50 flex items-center px-3 gap-2">
-                          <div className="flex gap-1.5">
-                            <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                            <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
-                          </div>
-                          <div className="flex-1 mx-2">
-                            <div className="h-4 bg-background rounded-md" />
-                          </div>
-                        </div>
-                        {/* Browser Content */}
-                        <div className="p-4 space-y-3">
-                          <div className="h-3 bg-muted rounded w-3/4" />
-                          <div className="h-3 bg-muted rounded w-1/2" />
-                          <div className="h-12 bg-muted/50 rounded mt-4" />
-                          <div className="grid grid-cols-3 gap-2 mt-2">
-                            <div className="h-8 bg-muted/50 rounded" />
-                            <div className="h-8 bg-muted/50 rounded" />
-                            <div className="h-8 bg-muted/50 rounded" />
-                          </div>
-                        </div>
+                      {/* Bottom gradient fade */}
+                      <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent z-10" />
+
+                      {/* Industry & Type Badges */}
+                      <div className="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+                        <Badge className={`bg-gradient-to-r ${project.gradient} text-white border-0 shadow-lg`}>
+                          <Briefcase className="h-3 w-3 mr-1" />
+                          {project.category}
+                        </Badge>
+                        <Badge variant="secondary" className="bg-black/50 text-white border-0 backdrop-blur-sm">
+                          {project.industry}
+                        </Badge>
                       </div>
 
-                      {/* Featured Badge */}
-                      {project.featured && (
-                        <div className="absolute top-3 right-3 z-10">
-                          <Badge className="bg-background/90 text-foreground backdrop-blur-sm border-0 shadow-lg">
-                            <Star className="h-3 w-3 mr-1 fill-yellow-500 text-yellow-500" />
-                            Featured
-                          </Badge>
-                        </div>
-                      )}
+                      {/* Location Badge */}
+                      <div className="absolute top-4 right-4 z-20">
+                        <Badge variant="secondary" className="bg-black/50 text-white border-0 backdrop-blur-sm">
+                          <MapPin className="h-3 w-3 mr-1" />
+                          {project.location}
+                        </Badge>
+                      </div>
 
                       {/* Hover Overlay */}
                       <motion.div
-                        className="absolute inset-0 bg-background/95 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
                         initial={false}
                       >
                         <motion.a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+                          className={`flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r ${project.gradient} text-white font-medium shadow-lg`}
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           <ExternalLink className="h-4 w-4" />
-                          Live Demo
-                        </motion.a>
-                        <motion.a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted text-foreground font-medium text-sm hover:bg-muted/80 transition-colors"
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <Github className="h-4 w-4" />
-                          Source
+                          Visit Website
                         </motion.a>
                       </motion.div>
                     </div>
 
                     {/* Content */}
                     <div className="p-6">
-                      {/* Category & Stats */}
-                      <div className="flex items-center justify-between mb-3">
-                        <Badge
-                          variant="outline"
-                          className="text-xs font-medium border-border/50"
-                        >
-                          {project.category}
-                        </Badge>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                          <span className="flex items-center gap-1">
-                            <Star className="h-3 w-3" />
-                            {project.stats.stars}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Eye className="h-3 w-3" />
-                            {project.stats.views}
-                          </span>
-                        </div>
+                      {/* Title & Subtitle */}
+                      <div className="mb-3">
+                        <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          {project.title}
+                        </h3>
+                        <p className={`text-sm font-medium bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
+                          {project.subtitle}
+                        </p>
                       </div>
-
-                      {/* Title */}
-                      <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
 
                       {/* Description */}
                       <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
@@ -372,35 +358,34 @@ export default function ProjectsPage() {
                       </p>
 
                       {/* Highlights */}
-                      <div className="space-y-2 mb-4">
-                        {project.highlights.map((highlight, index) => (
-                          <motion.div
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {project.highlights.slice(0, 3).map((highlight) => (
+                          <span
                             key={highlight}
-                            className="flex items-center gap-2 text-xs text-muted-foreground"
-                            initial={{ opacity: 0, x: -10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full"
+                            style={{
+                              backgroundColor: `hsl(var(--primary) / 0.1)`,
+                              color: `hsl(var(--primary))`,
+                            }}
                           >
-                            <CheckCircle2 className="h-3 w-3 text-green-500" />
                             {highlight}
-                          </motion.div>
+                          </span>
                         ))}
                       </div>
 
                       {/* Technologies */}
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-border/50">
                         {project.technologies.slice(0, 4).map((tech) => (
                           <motion.span
                             key={tech}
-                            className="px-2.5 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground"
+                            className="px-2 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground"
                             whileHover={{ scale: 1.05 }}
                           >
                             {tech}
                           </motion.span>
                         ))}
                         {project.technologies.length > 4 && (
-                          <span className="px-2.5 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground">
+                          <span className="px-2 py-1 text-xs font-medium rounded-md bg-muted/50 text-muted-foreground">
                             +{project.technologies.length - 4}
                           </span>
                         )}
