@@ -177,9 +177,8 @@ export const metadata: Metadata = {
 
   // Verification
   verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    // bing: "your-bing-verification-code",
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
   },
 
   // Alternate languages
@@ -243,6 +242,9 @@ export default function RootLayout({
         {/* DNS Prefetch for external resources */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Bing Verification */}
+        <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_VERIFICATION} />
 
         {/* Geo Tags */}
         <meta name="geo.region" content="PH" />
