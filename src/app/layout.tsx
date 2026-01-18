@@ -14,7 +14,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const baseUrl = "https://jpsolutions.dev";
+const baseUrl = "https://jpsolutions.art";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -256,7 +256,7 @@ export default function RootLayout({
         <meta name="business:contact_data:country_name" content="Philippines" />
         <meta name="business:contact_data:email" content="lucas.gabule@gmail.com" />
         <meta name="business:contact_data:phone_number" content="+639269422209" />
-        <meta name="business:contact_data:website" content="https://jpsolutions.dev" />
+        <meta name="business:contact_data:website" content="https://jpsolutions.art" />
 
         {/* Additional SEO Meta */}
         <meta name="subject" content="Web Development Services" />

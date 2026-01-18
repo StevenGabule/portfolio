@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     "web dev tips",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/blog",
+    canonical: "https://jpsolutions.art/blog",
   },
   openGraph: {
     title: "Blog | Web Development Tips & Tutorials",
     description:
       "Learn React, Next.js, Node.js, and more. Tutorials and insights from a senior developer.",
-    url: "https://jpsolutions.dev/blog",
+    url: "https://jpsolutions.art/blog",
     type: "website",
   },
 };

@@ -4,7 +4,7 @@ A modern, professional portfolio website built with Next.js 16, featuring stunni
 
 ## Live Demo
 
-[https://jpsolutions.dev](https://jpsolutions.dev)
+[https://jpsolutions.art](https://jpsolutions.art)
 
 ## Features
 
@@ -166,7 +166,7 @@ This project is open source and available under the [MIT License](LICENSE).
 ## Author
 
 **John Paul Gabule**
-- Website: [jpsolutions.dev](https://jpsolutions.dev)
+- Website: [jpsolutions.art](https://jpsolutions.art)
 - LinkedIn: [john-paul-gabule](https://www.linkedin.com/in/john-paul-gabule-4a4640b6/)
 - GitHub: [StevenGabule](https://github.com/StevenGabule)
 

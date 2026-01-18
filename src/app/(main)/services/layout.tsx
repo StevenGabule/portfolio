@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     "Filipino programmer services",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/services",
+    canonical: "https://jpsolutions.art/services",
   },
   openGraph: {
     title: "Web Development Services | JPSOLUTIONS",
     description:
       "Full Stack, Frontend, Backend, E-commerce, API, and Cloud development services. Quality code at affordable rates.",
-    url: "https://jpsolutions.dev/services",
+    url: "https://jpsolutions.art/services",
     type: "website",
   },
 };

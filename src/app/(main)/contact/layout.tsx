@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     "outsource to Philippines",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/contact",
+    canonical: "https://jpsolutions.art/contact",
   },
   openGraph: {
     title: "Contact JPSOLUTIONS | Free Consultation",
     description:
       "Get in touch for a free consultation. 24-hour response time, flexible scheduling, affordable rates.",
-    url: "https://jpsolutions.dev/contact",
+    url: "https://jpsolutions.art/contact",
     type: "website",
   },
 };

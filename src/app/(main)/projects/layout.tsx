@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     "client work",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/projects",
+    canonical: "https://jpsolutions.art/projects",
   },
   openGraph: {
     title: "Portfolio & Projects | JPSOLUTIONS",
     description:
       "50+ successful projects across AgriTech, HealthTech, E-commerce, Government sectors. View real-world solutions.",
-    url: "https://jpsolutions.dev/projects",
+    url: "https://jpsolutions.art/projects",
     type: "website",
   },
 };

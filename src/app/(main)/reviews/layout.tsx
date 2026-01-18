@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     "recommended developer",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/reviews",
+    canonical: "https://jpsolutions.art/reviews",
   },
   openGraph: {
     title: "Client Reviews & Testimonials | JPSOLUTIONS",
     description:
       "99% client satisfaction rate. Read authentic reviews from clients worldwide.",
-    url: "https://jpsolutions.dev/reviews",
+    url: "https://jpsolutions.art/reviews",
     type: "website",
   },
 };

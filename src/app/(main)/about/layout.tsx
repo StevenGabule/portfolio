@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     "Philippines software engineer",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev/about",
+    canonical: "https://jpsolutions.art/about",
   },
   openGraph: {
     title: "About John Paul Gabule | Senior Full Stack Developer",
     description:
       "6+ years of experience building web applications. React, Next.js, Node.js, Laravel expert. View my professional journey.",
-    url: "https://jpsolutions.dev/about",
+    url: "https://jpsolutions.art/about",
     type: "profile",
   },
 };

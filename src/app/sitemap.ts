@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://jpsolutions.dev";
+  const baseUrl = "https://jpsolutions.art";
   const currentDate = new Date().toISOString();
 
   // Main pages with their priorities and change frequencies

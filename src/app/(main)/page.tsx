@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     "outsource to Philippines",
   ],
   alternates: {
-    canonical: "https://jpsolutions.dev",
+    canonical: "https://jpsolutions.art",
   },
   openGraph: {
     title: "JPSOLUTIONS | Hire Filipino Full Stack Developer",
     description:
       "Experienced Filipino developer with 6+ years experience. React, Next.js, Node.js, Laravel. Excellent English, quality code, affordable rates.",
-    url: "https://jpsolutions.dev",
+    url: "https://jpsolutions.art",
     type: "website",
   },
 };

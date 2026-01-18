@@ -157,7 +157,7 @@ export default function TwitterImage() {
             fontFamily: "system-ui, sans-serif",
           }}
         >
-          jpsolutions.dev
+          jpsolutions.art
         </div>
       </div>
     ),

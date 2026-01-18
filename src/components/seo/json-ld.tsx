@@ -2,7 +2,7 @@ export function PersonJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://jpsolutions.dev/#person",
+    "@id": "https://jpsolutions.art/#person",
     name: "John Paul Gabule",
     alternateName: ["JP Gabule", "JPSOLUTIONS", "Filipino Developer"],
     description:
@@ -11,8 +11,8 @@ export function PersonJsonLd() {
       "@type": "Country",
       name: "Philippines",
     },
-    url: "https://jpsolutions.dev",
-    image: "https://jpsolutions.dev/images/profile.jpg",
+    url: "https://jpsolutions.art",
+    image: "https://jpsolutions.art/images/profile.jpg",
     email: "lucas.gabule@gmail.com",
     telephone: "+639269422209",
     address: {
@@ -29,7 +29,7 @@ export function PersonJsonLd() {
     worksFor: {
       "@type": "Organization",
       name: "JPSOLUTIONS",
-      url: "https://jpsolutions.dev",
+      url: "https://jpsolutions.art",
     },
     knowsAbout: [
       "Web Development",
@@ -81,14 +81,14 @@ export function OrganizationJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://jpsolutions.dev/#organization",
+    "@id": "https://jpsolutions.art/#organization",
     name: "JPSOLUTIONS",
     alternateName: ["JP Solutions", "Filipino Web Developer", "Philippines Developer"],
     description:
       "Filipino-owned professional web development and consulting services. We build modern, scalable web applications for businesses worldwide. Known for excellent English communication, strategic thinking, and quality deliverables.",
-    url: "https://jpsolutions.dev",
-    logo: "https://jpsolutions.dev/logo.png",
-    image: "https://jpsolutions.dev/og-image.jpg",
+    url: "https://jpsolutions.art",
+    logo: "https://jpsolutions.art/logo.png",
+    image: "https://jpsolutions.art/og-image.jpg",
     email: "lucas.gabule@gmail.com",
     telephone: "+639269422209",
     address: {
@@ -133,7 +133,7 @@ export function OrganizationJsonLd() {
     ],
     founder: {
       "@type": "Person",
-      "@id": "https://jpsolutions.dev/#person",
+      "@id": "https://jpsolutions.art/#person",
     },
     sameAs: [
       "https://github.com/StevenGabule",
@@ -214,25 +214,25 @@ export function WebSiteJsonLd() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://jpsolutions.dev/#website",
-    url: "https://jpsolutions.dev",
+    "@id": "https://jpsolutions.art/#website",
+    url: "https://jpsolutions.art",
     name: "JPSOLUTIONS - Professional Web Development & Consulting",
     description:
       "Professional web development, consulting, and full-stack development services. Hire an experienced developer for your next project.",
     publisher: {
       "@type": "Organization",
-      "@id": "https://jpsolutions.dev/#organization",
+      "@id": "https://jpsolutions.art/#organization",
     },
     author: {
       "@type": "Person",
-      "@id": "https://jpsolutions.dev/#person",
+      "@id": "https://jpsolutions.art/#person",
     },
     inLanguage: "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://jpsolutions.dev/search?q={search_term_string}",
+        urlTemplate: "https://jpsolutions.art/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -303,7 +303,7 @@ export function ServiceJsonLd() {
     serviceType: "Web Development",
     provider: {
       "@type": "ProfessionalService",
-      "@id": "https://jpsolutions.dev/#organization",
+      "@id": "https://jpsolutions.art/#organization",
     },
     areaServed: {
       "@type": "Place",
